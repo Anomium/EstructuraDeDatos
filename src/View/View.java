@@ -8,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 public class View extends javax.swing.JFrame {
 
     EstudianteController estuco = new EstudianteController();
-    ExamenController exaco = new ExamenController();
 
     public View() {
         initComponents();
@@ -20,6 +19,12 @@ public class View extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel5 = new javax.swing.JPanel();
+        txt_Codigo = new javax.swing.JTextField();
+        txt_NumeroPregBue = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btn_Guardar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txt_codigoEstu = new javax.swing.JTextField();
@@ -31,10 +36,10 @@ public class View extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_examenes = new javax.swing.JTable();
         btn_calificar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        lbl_nombre = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txt_preguntasbue = new javax.swing.JTextField();
+        btn_GuardarCalif = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         lbl_nombreEstu = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -42,6 +47,54 @@ public class View extends javax.swing.JFrame {
         tbl_Calificados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Codigo:");
+
+        jLabel7.setText("Numero de preguntas:");
+
+        btn_Guardar.setText("Aceptar");
+        btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GuardarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_NumeroPregBue, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(158, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_Guardar)
+                .addGap(192, 192, 192))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_NumeroPregBue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(26, 26, 26)
+                .addComponent(btn_Guardar)
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Tipo Examen", jPanel5);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setText("Entrega");
@@ -126,6 +179,11 @@ public class View extends javax.swing.JFrame {
         }
 
         btn_calificar.setText("Calificar");
+        btn_calificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_calificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,47 +212,52 @@ public class View extends javax.swing.JFrame {
 
         jLabel2.setText("Preguntas buenas");
 
-        jButton1.setText("Guardar");
+        btn_GuardarCalif.setText("Guardar");
+        btn_GuardarCalif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GuardarCalifActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Estudiante:");
 
         lbl_nombreEstu.setText("xxxx.xxxxx.xxxx");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout lbl_nombreLayout = new javax.swing.GroupLayout(lbl_nombre);
+        lbl_nombre.setLayout(lbl_nombreLayout);
+        lbl_nombreLayout.setHorizontalGroup(
+            lbl_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lbl_nombreLayout.createSequentialGroup()
                 .addGap(161, 161, 161)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(lbl_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(lbl_nombreLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbl_nombreEstu, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addComponent(txt_preguntasbue, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(lbl_nombreLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(jButton1)))
+                        .addComponent(btn_GuardarCalif)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        lbl_nombreLayout.setVerticalGroup(
+            lbl_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbl_nombreLayout.createSequentialGroup()
                 .addContainerGap(88, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(lbl_nombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lbl_nombreEstu))
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_preguntasbue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(jButton1)
+                .addComponent(btn_GuardarCalif)
                 .addGap(72, 72, 72))
         );
 
-        jTabbedPane1.addTab("Examen", jPanel3);
+        jTabbedPane1.addTab("Examen", lbl_nombre);
 
         tbl_Calificados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -244,7 +307,10 @@ public class View extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,12 +322,42 @@ public class View extends javax.swing.JFrame {
 
     private void btn_entregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entregarActionPerformed
         estuco.Create(new Estudiante(txt_nombreEstu.getText(), txt_codigoEstu.getText(), 0, true));
+        txt_codigoEstu.setText(null);
+        txt_nombreEstu.setText(null);
         ListarTodo();
     }//GEN-LAST:event_btn_entregarActionPerformed
+
+    private void btn_calificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calificarActionPerformed
+        
+        try {
+            lbl_nombreEstu.setText(estuco.getPila().get(0).getNombreEstudiante());
+        } catch (Exception e) {
+        }
+        
+    }//GEN-LAST:event_btn_calificarActionPerformed
+
+    private void btn_GuardarCalifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarCalifActionPerformed
+        try {
+            estuco.Update(0, new Estudiante(
+                estuco.getPila().get(0).getNombreEstudiante(),
+                estuco.getPila().get(0).getCodigo(),
+                Integer.parseInt(txt_preguntasbue.getText()),
+                estuco.getPila().get(0).isEstado()));
+            lbl_nombreEstu.setText("xxxx.xxxxx.xxxx");
+            ListarTodo();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btn_GuardarCalifActionPerformed
+
+    private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
+        estuco.Create(new Examen(txt_Codigo.getText(), Integer.parseInt(txt_NumeroPregBue.getText())));
+        txt_NumeroPregBue.setText(null);
+        txt_Codigo.setText(null);
+    }//GEN-LAST:event_btn_GuardarActionPerformed
     
     private void ListarTodo(){
         Listar((DefaultTableModel) tbl_examenes.getModel(), estuco.ReadAll());
-        Listar((DefaultTableModel) tbl_Calificados.getModel(), exaco.ReadAll());
+        Listar((DefaultTableModel) tbl_Calificados.getModel(), estuco.ReadCalif());
     }
     
     private void Listar(DefaultTableModel Tabla, ArrayList<String[]> Lista) {
@@ -307,26 +403,32 @@ public class View extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Guardar;
+    private javax.swing.JButton btn_GuardarCalif;
     private javax.swing.JButton btn_calificar;
     private javax.swing.JButton btn_entregar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel lbl_nombre;
     private javax.swing.JLabel lbl_nombreEstu;
     private javax.swing.JTable tbl_Calificados;
     private javax.swing.JTable tbl_examenes;
+    private javax.swing.JTextField txt_Codigo;
+    private javax.swing.JTextField txt_NumeroPregBue;
     private javax.swing.JTextField txt_codigoEstu;
     private javax.swing.JTextField txt_nombreEstu;
+    private javax.swing.JTextField txt_preguntasbue;
     // End of variables declaration//GEN-END:variables
 }
